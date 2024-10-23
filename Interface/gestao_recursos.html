@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerenciador de Recursos Internos</title>
+    <!------------------------------------- Referencia para o CSS desse código ------------------------------------------------>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="cadastro_container">
+        <h1>Gerenciador de Recursos</h1>
+        <form id="cadastro_form">
+            <!-- Pede dados de login e o que deseja fazer, na hora de executar vai verificar se o usuário consegue acesso -->
+            <input type="text" id="resource-name-usuario" placeholder="Nome do usuário" required>
+            <input type="password" id="resource-name-senha" placeholder="Senha" required>
+            <input type="text" id="resource-name" placeholder="Nome do recurso" required>
+            <select id="resource-type">
+                <option value="equipamento">Equipamento</option>
+                <option value="veiculo">Veículo</option>
+                <option value="dispositivo">Dispositivo de Segurança</option>
+            </select>
+            <button type="submit">Adicionar</button>
+        </form>
+        <ul id="resource-list"></ul>
+    </div>
+
+    <!--------------------------------- Java script com a lógica dos botões das opções ---------------------------------------------->
+    <script>
+        //Pegando os dados do form de login
+        document.getElementById('cadastro_form').addEventListener('submit', function(event) {
+        event.preventDefault()
+        //Pegando os dados do login 
+        const resourceNameUsuario = document.getElementById('resource-name-usuario').value
+        const resourceNameSenha = document.getElementById('resource-name-senha').value
+        const resourceName = document.getElementById('resource-name').value
+        const resourceType = document.getElementById('resource-type').value
+
+        addResource(resourceNameUsuario,resourceNameSenha,resourceName, resourceType)
+        
+        //Permitindo um novo login
+        document.getElementById('login_form').reset()
+        })
+
+    function check_perfil(){
+
+    }
+
+    function addResource(name, type) {
+        const list = document.getElementById('resource-list')
+
+        const listItem = document.createElement('li')
+        listItem.textContent = `${name} (${type})`
+
+        const deleteButton = document.createElement('button')
+        deleteButton.textContent = 'Remover'
+        deleteButton.classList.add('delete')
+        deleteButton.onclick = function() {
+            list.removeChild(listItem);
+        }
+
+        listItem.appendChild(deleteButton)
+        list.appendChild(listItem)
+    }
+    </script>
+</body>
+</html>

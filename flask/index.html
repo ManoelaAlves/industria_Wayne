@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Controle de Acesso</title>
+</head>
+<body>
+    <h1>Controle de Acesso às Áreas</h1>
+    <form id="loginForm">
+        <label for="nome">Nome de Usuário:</label><br>
+        <input type="text" id="nome" name="nome"><br><br>
+        
+        <label for="senha">Senha:</label><br>
+        <input type="password" id="senha" name="senha"><br><br>
+
+        <label for="area">Área que deseja acessar:</label><br>
+        <input type="text" id="area" name="area"><br><br>
+
+        <button type="submit">Confirmar</button>
+    </form>
+
+    <p id="resultado"></p>
+
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function(event) {
+            event.preventDefault()
+
+            const nome = document.getElementById('nome').value
+            const senha = document.getElementById('senha').value
+            const area = document.getElementById('area').value
+
+            fetch('/acesso', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    nome: nome,
+                    senha: senha,
+                    area: area
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('resultado').innerText = data.mensagem
+            })
+        })
+    </script>
+</body>
+</html>

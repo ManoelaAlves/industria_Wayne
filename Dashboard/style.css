@@ -1,0 +1,104 @@
+/* Arquivo: style.css */
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f8f9fa;
+    margin: 0;
+    padding: 0;
+    color: #343a40;
+}
+
+.header {
+    background-color: #212529;
+    padding: 20px;
+    color: white;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.header-img {
+    width: 150px;
+    margin-top: 10px;
+    border-radius: 50%;
+}
+
+.navbar {
+    margin-top: 20px;
+    padding: 15px;
+    border-radius: 8px;
+    background-color: #343a40;
+}
+
+.navbar .nav-link {
+    color: white !important;
+}
+
+.navbar .nav-link:hover {
+    background-color: #495057;
+    border-radius: 5px;
+}
+
+#resumo {
+    display: flex;
+    justify-content: space-around;
+    margin: 40px auto;
+    padding: 20px;
+}
+
+.card {
+    background-color: #007bff;
+    color: white;
+    width: 250px;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-size: 18px;
+}
+
+#graficos {
+    display: flex;
+    justify-content: space-around;
+    margin: 40px auto;
+}
+
+canvas {
+    width: 400px;
+    height: 200px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    background-color: #fff;
+}
+
+#alertas {
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #f8d7da;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+#alertas h2 {
+    color: #721c24;
+}
+
+#alertas ul {
+    list-style: none;
+    padding: 0;
+}
+
+#alertas ul li {
+    background-color: #f5c6cb;
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #212529;
+    color: white;
+    margin-top: 50px;
+    font-size: 14px;
+}

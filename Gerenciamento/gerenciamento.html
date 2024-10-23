@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Controle de Acesso</title>
+</head>
+<body>
+    <h1>Controle de Acesso as áreas</h1>
+    <!-- Formulário para pegar os dados -->
+    <form id="loginForm">
+        <label for="nome">Nome de Usuário:</label><br>
+        <input type="text" id="nome" name="nome"><br><br>
+        
+        <label for="senha">Senha:</label><br>
+        <input type="password" id="senha" name="senha"><br><br>
+
+        <label for="area">Área que deseja acessar:</label><br>
+        <input type="text" id="area" name="area"><br><br>
+
+        <button type="submit">Confirmar</button>
+    </form>
+
+    <p id="resultado"></p>
+
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function(event) {
+        //Para não dá erro no forms
+        event.preventDefault()
+
+            const nome = document.getElementById('nome').value
+            const senha = document.getElementById('senha').value
+            const area = document.getElementById('area').value
+            console.log(nome)
+            console.log(senha)
+            console.log(area)
+            // Enviar dados para o Python usando fetch, fazendo a conexão entre o backend e o frontend
+            fetch('/cgi-bin/controle_acesso.py', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    nome: nome,
+                    senha: senha,
+                    area: area
+                })
+            })
+            //Toda vez que o fetch nos traz informações, elas vem no formato JSON
+            //Os dados precisam ser enviados em um formato que qualquer linguagem entenda
+            //e o unico formato que toda linguagem tem é string, por isso, as informações sempre vem como JSON (uma string gigante)
+            //Preciso sempre converter o meu JSON, para um objeto Javascript
+            //para que eu consiga acessar os meus dados
+            .then(response => response.json())
+            //o que está dentro da promessa resolvida, possuindo o objeto JSON retornado pelo python (backend)
+            .then(data => {
+                document.getElementById('resultado').innerText = data.mensagem
+            })
+        })
+    </script>
+</body>
+</html>

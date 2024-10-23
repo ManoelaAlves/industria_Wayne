@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HOME</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <!-- action para quando o formulário for chamado no backend -->
+        <form action="/login" id="login" method="post" class="formulario">
+            <h1 class="titulo">Gerenciamento de segurança</h1><br>
+
+            <label for="nome" class="label">NOME</label>
+            <input type="text" name="nome" id="nome" required placeholder="Digite seu nome">
+
+            <label for="senha" id="senha" class="label">SENHA</label>
+            <input type="password" name="senha" id="senha" required placeholder="Digite sua senha">
+
+            <label for="text" class="label">ÁREA PARA ACESSO</label>
+            <input type="text" name="area" id="area" required placeholder="Digite a área que deseja acessar">
+
+            <button type="submit" id="btn_login" class="botao">Entrar</button>
+        </form>
+    </div>
+</body>
+</html>
