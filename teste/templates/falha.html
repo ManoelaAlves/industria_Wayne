@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aviso - Acesso à Área da Empresa</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="aviso-box">
+            <h1>Acesso à Área da Empresa</h1>
+            <p>Autenticação falha.</p>
+            <p>Por favor, entrar em contato com seu supervisor.</p>
+            <form action = "/login" method = "get"> 
+                <button type="submit">Retornar ao login</button>
+            </form>
+            
+        </div>
+    </div>
+</body>
+</html>

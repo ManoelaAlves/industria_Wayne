@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aviso - Acesso à Área da Empresa</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="aviso-box">
+            <h1>Acesso à Área da Empresa</h1>
+            <p>Bem-vindo! A área restrita da empresa está disponível para usuários autorizados.</p>
+            <p>Por favor, faça login para continuar.</p>
+            <form action = "/recursos" method = "get"> 
+                <button type="submit">Acessar área</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

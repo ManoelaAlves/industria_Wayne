@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerenciamento de Recursos</title>
+    <link rel="stylesheet" href="../static/css/estilo.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Gerenciamento de Recursos Internos</h1>
+            <a href="/logout" class="logout-btn">Sair</a>
+        </header>
+
+        <!-- Seção de gerenciamento de recursos -->
+        <section class="resource-management">
+            <h2>Recursos Disponíveis</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nome</th>
+                        <th>Tipo</th>
+                        <th>Status</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Loop pelos recursos do banco de dados -->
+                    {% for recurso in recursos %}
+                    <tr>
+                        <td>{{ recurso.idrecursos }}</td>
+                        <td>{{ recurso.nome }}</td>
+                        <td>{{ recurso.tipo }}</td>
+                        <td>{{ recurso.status }}</td>
+                        <td>
+                            <form action="/edit-recurso/{{ recurso.idrecursos }}" method="post">
+                                <button type="submit" class="btn update-btn">Editar</button>
+                            </form>
+                            <form action="/delete-recurso/{{ recurso.idrecursos }}" method="post">
+                                <button type="submit" class="btn delete-btn">Excluir</button>
+                            </form>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Seção para adicionar novos recursos -->
+        <section class="add-resource">
+            <h2>Adicionar Novo Recurso</h2>
+            <form action="/add-recurso" method="post">
+                <label for="nome">Nome do Recurso:</label>
+                <input type="text" id="nome" name="nome" required>
+
+                <label for="tipo">Tipo de Recurso:</label>
+                <select id="tipo" name="tipo">
+                    <option value="equipamento">Equipamento</option>
+                    <option value="veículo">Veículo</option>
+                    <option value="dispositivo">Dispositivo de Segurança</option>
+                </select>
+
+                <label for="status">Status:</label>
+                <select id="status" name="status">
+                    <option value="disponível">Disponível</option>
+                    <option value="em uso">Em Uso</option>
+                    <option value="em manutenção">Em Manutenção</option>
+                    <option value="indisponível">Indisponível</option>
+                </select>
+
+                <label for="descricao">Descrição:</label>
+                <textarea id="descricao" name="descricao" rows="4"></textarea>
+
+                <button type="submit" class="btn submit-btn">Adicionar Recurso</button>
+            </form>
+        </section>
+    </div>
+</body>
+</html>
